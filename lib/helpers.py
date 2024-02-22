@@ -137,7 +137,7 @@ def delete_employee():
     prompt for the employee id and delete the employee from the database 
     if it exists and print a confirmation message, or print an error message if the employee is not in the database.
     '''
-    id_ = int(input("Enter the department's id: "))
+    c
     if emp := Employee.find_by_id(id_):
         emp.delete()
         print(f'emp {id_} deleted')
@@ -146,4 +146,18 @@ def delete_employee():
 
 
 def list_department_employees():
-    pass
+    '''
+    prompt for a department id.
+    find the department with that id from the database.
+    if the department exists in the database, get the department's employees (HINT: call the employees() instance method) and loop to print each employee's data on a separate line.
+    if the department does not exist in the database, print an error message.
+    '''
+    id_ = int(input("Enter the department's id: "))
+    department = Department.find_by_id(id_)
+    print(department)
+    
+    if department := Department.find_by_id(id_):
+        for employee in department.employees():
+            print(employee)
+    else:
+        print(f'Department {id_} not found')
